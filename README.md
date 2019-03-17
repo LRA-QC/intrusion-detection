@@ -15,8 +15,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 Software package: **python3** and **nmon**
 
-
-
 **Ubuntu / Debian**
 
 ```
@@ -41,13 +39,6 @@ sudo yum install python3 nmon
 sudo dnf install python3 nmon
 ```
 
-
-
-### Installing
-
-Download and unzip, and make sure you have installed the **Prerequisites**
-
-
 ## Whitelist
 Every time you run the detection script, a list of all detected devices will be written in the file 'devices.mac'. 
 
@@ -65,19 +56,18 @@ The following command will flush the current whitelist and import the entries in
 sudo ./trust-devices.py  data.db devices.mac
 ```
 
+### Installing
 
+Download and unzip, and make sure you have installed the **Prerequisites**
 
-## Deployment
+Things to do:
 
-copy the following scripts to any folder. The folder should be writable (because a devices.mac is generated)
+- The folder should be writable because a devices.mac is generated every time you launch the detect.py script
+- Don't forget to mark the python scripts as 'executables'
 
-- detect.py
-- trust-devices.py
-
-you should launch both commands with sudo:
-
-- detect.py : nmon requires root privileges to get the MAC addresses
-- trust-devices.py : requires root privileges because the database will be created with root. If you modify the database so that it's writable for someone else, you won't need sudo anymore.
+```
+sudo chmod +x *.py
+```
 
 ## Running
 
@@ -88,6 +78,12 @@ example of valid networks:
 - 192.168.0.0/24
 - 192.168.1.0/24
 - 192.168.2.0/24
+
+you should launch both programs with sudo:
+
+- detect.py : nmon requires root privileges to get the MAC addresses
+- trust-devices.py : requires root privileges because the database will be created with root. If you modify the database so that it's writable for someone else, you won't need sudo anymore.
+
 
 ```
 Syntax:
