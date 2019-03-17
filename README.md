@@ -1,6 +1,6 @@
 # Intrusion-detection
 
-Intrusion detection script in python
+The idea behind this script is to find out all the devices connected to your network and alert you of the untrusted ones. It could help you find out if your neighbors are connecting to your network. Its takes a few seconds to run, you could run it every 5 minutes, if desired.
 
 This script will scan the network of your choice and will alert you of any devices not present in the whitelist. The whitelist is a list of MAC address that YOU trust. The first time you run the script, the whitelist will be empty, it's up to up to add your trusted devices to the whitelist. 
 
