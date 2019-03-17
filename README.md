@@ -2,7 +2,7 @@
 
 Intrusion detection script in python
 
-This script will scan the network of your choice and will alert you of devices not present in the whitelist. The whitelist is a list of MAC address that YOU trust. The first time you run the script the whitelist will be empty, it's up to up to add your trusted devices to the whitelist. 
+This script will scan the network of your choice and will alert you of any devices not present in the whitelist. The whitelist is a list of MAC address that YOU trust. The first time you run the script, the whitelist will be empty, it's up to up to add your trusted devices to the whitelist. 
 
 See the whitelist section for more information
 
@@ -91,11 +91,14 @@ example of valid networks:
 
 ```
 Syntax:
-	detect.py  network_range  database
+	sudo ./detect.py  network_range  database
 
 example: 
 sudo ./detect.py 192.168.2.0/24 data.db
 ```
+
+on the first run, all devices should be listed as untrusted, read the whitelist section. You need to run other script to import your trusted devices list.
+
 
 ## Built With
 
