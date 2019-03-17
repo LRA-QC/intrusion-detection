@@ -63,12 +63,14 @@ def validateHost():
     c = conn.cursor()
     c.execute("select distinct id from scans order by 1 desc limit 1;") #GET LAST SCAN ID
     row = c.fetchone()
+    count=0
     if row:
         c.execute("select * from scans where id = "+str(row[0])+" and mac not in (select mac from whitelist);")
         rows = c.fetchall()
         for row in rows:
             print("Intruder detected in scan [%d] IP:[%s] MAC:[%s] VENDOR:[%s]" % (row[0],row[1],row[2],row[3]))
-    return
+            count=count+1
+    return count
 
 if len(sys.argv) != 3:
     print("Syntax\n\t./detect.py <network>/<mask> <database>")
@@ -76,11 +78,17 @@ else:
     SCANID = datetime.datetime.now().strftime("%Y%m%d%H%M")
     conn = sqlite3.connect(sys.argv[2])
     if conn:
+
         conn.execute('CREATE TABLE IF NOT EXISTS scans  (id integer, ip text, mac text, vendor text, PRIMARY KEY (id, ip));')
         conn.execute('CREATE TABLE IF NOT EXISTS whitelist  (mac text, description text, primary key (mac));')
         getNmapScan(sys.argv[1])    #SCAN NETWORK
-        validateHost()
+        count=validateHost()
         conn.commit()
         conn.close()
+        if count > 0:
+            exit(1)
+        exit(0)
     else:
         print("Error creating/accessing the database")
+        exit(128)
+exit(256)
