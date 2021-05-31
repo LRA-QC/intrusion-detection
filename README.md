@@ -13,30 +13,30 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Software package: **python3** and **nmon**
+Software package: **python3** and **nmap**
 
 **Ubuntu / Debian**
 
 ```
-sudo apt install python3 nmon
+sudo apt install python3 nmap 
 ```
 
 **Arch/Manjaro/Antergos** 
 
 ```
-sudo pacman -S nmon python3
+sudo pacman -S nmap python3
 ```
 
 **CentOS 7/ Redhat 7**
 
 ```
-sudo yum install python3 nmon
+sudo yum install python3 nmap
 ```
 
 **Fedora**
 
 ```
-sudo dnf install python3 nmon
+sudo dnf install python3 nmap
 ```
 
 ## Whitelist
